@@ -1,35 +1,35 @@
 const LastCallWebpackPlugin = require('last-call-webpack-plugin');
-const mqpacker = require('../css-mqpacker');
+const mqpacker = require('../css-mqpacker/index.js');
 
 class CSSMQPackerPlugin extends LastCallWebpackPlugin {
-  constructor() {
+  constructor({
+    regExp = /\.css$/i,
+    canPrint = true,
+    sort = false,
+  } = {}) {
     super({
       assetProcessors: [
         {
+          regExp,
+          canPrint,
           phase: LastCallWebpackPlugin.PHASES.OPTIMIZE_CHUNK_ASSETS,
-          regExp: /\.css(\?.*)?$/i,
-          processor: (assetName, asset) =>
-            this.processCss(assetName, asset),
+
+          async processor(assetName, asset) {
+            const { css } = mqpacker.pack(asset.source(), {
+              sort,
+              from: assetName,
+              to: assetName,
+            });
+
+            return css;
+          },
         },
       ],
-      canPrint: true,
     });
   }
 
   buildPluginDescriptor() {
-    return { name: 'CSSMQPackerPlugin' };
-  }
-
-  async processCss(assetName, asset) {
-    const css = asset.sourceAndMap
-      ? asset.sourceAndMap()
-      : { source: asset.source() };
-
-    return mqpacker.pack(css.source, {
-      from: assetName,
-      to: assetName,
-      map: css.map,
-    }).css;
+    return { name: 'css-mqpacker-webpack-plugin' };
   }
 }
 

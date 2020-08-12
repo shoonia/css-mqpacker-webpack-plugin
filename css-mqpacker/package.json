@@ -1,0 +1,68 @@
+{
+  "_args": [
+    [
+      "@hail2u/css-mqpacker@8.0.1",
+      "/Users/alexanderz/Desktop/projects/css-mqpacker-webpack-plugin"
+    ]
+  ],
+  "_development": true,
+  "_from": "@hail2u/css-mqpacker@8.0.1",
+  "_id": "@hail2u/css-mqpacker@8.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-ri+FpePyoMw2//KEOrs1pzP+eO9hRvdBbiah111ogHWs7eKS4NwjfpB0XcP4qrMpHUtpFHHK3JLSETQ41VSoAA==",
+  "_location": "/@hail2u/css-mqpacker",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "@hail2u/css-mqpacker@8.0.1",
+    "name": "@hail2u/css-mqpacker",
+    "escapedName": "@hail2u%2fcss-mqpacker",
+    "scope": "@hail2u",
+    "rawSpec": "8.0.1",
+    "saveSpec": null,
+    "fetchSpec": "8.0.1"
+  },
+  "_requiredBy": [
+    "#DEV:/"
+  ],
+  "_resolved": "https://npm.pkg.github.com/download/@hail2u/css-mqpacker/8.0.1/d77d222665a6d48f6c431f74c304f9b9ca40a2862e9d6d04f4951d7497b3bf56",
+  "_spec": "8.0.1",
+  "_where": "/Users/alexanderz/Desktop/projects/css-mqpacker-webpack-plugin",
+  "author": {
+    "name": "Kyo Nagashima",
+    "email": "hail2u@gmail.com",
+    "url": "https://kyonagashima.com/"
+  },
+  "bin": {
+    "mqpacker": "bin/mqpacker.js"
+  },
+  "bugs": {
+    "url": "https://github.com/hail2u/node-css-mqpacker/issues"
+  },
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "postcss": "^7.0.32"
+  },
+  "description": "Pack same CSS media query rules into one using PostCSS",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "tape": "^5.0.1"
+  },
+  "files": [],
+  "homepage": "https://github.com/hail2u/node-css-mqpacker",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@hail2u/css-mqpacker",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/hail2u/node-css-mqpacker.git"
+  },
+  "scripts": {
+    "test": "eslint index.js test/index.js && tape \"test/**/*.js\""
+  },
+  "version": "8.0.1"
+}

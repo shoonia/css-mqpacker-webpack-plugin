@@ -1,6 +1,4 @@
 /**
- * post-install git hook
- *
  * The `@hail2u/css-mqpacker` package uses the GitHub register.
  * It may create a problem in CI,
  * therefore, we commit the `css-mqpacker` package with this one.

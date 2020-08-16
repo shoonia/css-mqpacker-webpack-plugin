@@ -1,3 +1,4 @@
+const postcss = require('postcss');
 const LastCallWebpackPlugin = require('last-call-webpack-plugin');
 const mqpacker = require('../css-mqpacker/index.js');
 
@@ -14,12 +15,10 @@ class CSSMQPackerPlugin extends LastCallWebpackPlugin {
           canPrint,
           phase: LastCallWebpackPlugin.PHASES.OPTIMIZE_CHUNK_ASSETS,
 
-          async processor(assetName, asset) {
-            const { css } = mqpacker.pack(asset.source(), {
-              sort,
-              from: assetName,
-              to: assetName,
-            });
+          async processor(_, asset) {
+            const { css } = await postcss([
+              mqpacker({ sort }),
+            ]).process(asset.source());
 
             return css;
           },

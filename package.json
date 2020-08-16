@@ -1,7 +1,7 @@
 {
   "name": "css-mqpacker-webpack-plugin",
-  "version": "0.2.0",
-  "description": "Pack same CSS media query rules into one using PostCSS",
+  "version": "0.3.0",
+  "description": "The Webpack plugin for pack same CSS media query rules into one using PostCSS",
   "main": "src/index.js",
   "scripts": {
     "hoist": "node hoist.js"
@@ -19,6 +19,7 @@
   },
   "keywords": [
     "webpack",
+    "postcss",
     "css-mqpacker"
   ],
   "repository": {

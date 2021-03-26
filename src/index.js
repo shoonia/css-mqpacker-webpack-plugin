@@ -1,6 +1,6 @@
 const postcss = require('postcss');
 const LastCallWebpackPlugin = require('last-call-webpack-plugin');
-const mqpacker = require('../css-mqpacker/index.js');
+const mqpacker = require('@hail2u/css-mqpacker');
 
 class CSSMQPackerPlugin extends LastCallWebpackPlugin {
   constructor({

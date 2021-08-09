@@ -1,10 +1,10 @@
 {
   "name": "@hail2u/css-mqpacker",
-  "version": "8.0.1",
+  "version": "9.0.0",
   "author": {
     "name": "Kyo Nagashima",
     "email": "hail2u@gmail.com",
-    "url": "https://kyonagashima.com/"
+    "url": "https://hail2u.net/"
   },
   "homepage": "https://github.com/hail2u/node-css-mqpacker",
   "license": "MIT",

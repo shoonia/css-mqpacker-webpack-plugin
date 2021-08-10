@@ -29,6 +29,13 @@
     "optimize",
     "optimizer"
   ],
+  "files": [
+    "LICENSE",
+    "css-mqpacker",
+    "src",
+    "package.json",
+    "README.md"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/shoonia/css-mqpacker-webpack-plugin.git"

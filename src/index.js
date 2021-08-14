@@ -1,35 +1,76 @@
 const postcss = require('postcss');
-const LastCallWebpackPlugin = require('last-call-webpack-plugin');
 const mqpacker = require('../css-mqpacker/index.js');
 
-class CSSMQPackerPlugin extends LastCallWebpackPlugin {
-  constructor({
-    regExp = /\.css$/i,
-    canPrint = true,
-    sort = false,
-  } = {}) {
-    super({
-      assetProcessors: [
-        {
-          regExp,
-          canPrint,
-          phase: LastCallWebpackPlugin.PHASES.OPTIMIZE_CHUNK_ASSETS,
+class CssMqpackerPlugin {
+  constructor(options = {}) {
+    const {
+      test = /\.css(\?.*)?$/i,
+      include,
+      exclude,
+      sort = false,
+    } = options;
 
-          async processor(_, asset) {
-            const { css } = await postcss([
-              mqpacker({ sort }),
-            ]).process(asset.source());
-
-            return css;
-          },
-        },
-      ],
-    });
+    this.options = {
+      test,
+      include,
+      exclude,
+      sort,
+    };
   }
 
-  buildPluginDescriptor() {
-    return { name: 'css-mqpacker-webpack-plugin' };
+  async optimize(compiler, compilation, assets) {
+    const { RawSource } = compiler.webpack.sources;
+    const matchObject = compiler.webpack.ModuleFilenameHelpers.matchObject.bind(
+      undefined,
+      this.options,
+    );
+
+    const assetsForMinify = Object
+      .keys(typeof assets === 'undefined' ? compilation.assets : assets)
+      .filter((name) => matchObject(name))
+      .map((name) => {
+        const { source } = compilation.getAsset(name);
+
+        return { name, inputSource: source };
+      });
+
+    const scheduledTasks = [];
+
+    const mqp = postcss([
+      mqpacker({
+        sort: this.options.sort,
+      }),
+    ]);
+
+    for (const asset of assetsForMinify) {
+      const task = async () => {
+        const { name, inputSource } = asset;
+        const { css } = await mqp.process(inputSource.source());
+
+        compilation.updateAsset(name, new RawSource(css));
+      };
+
+      scheduledTasks.push(task());
+    }
+
+    Promise.all(scheduledTasks);
+  }
+
+  apply(compiler) {
+    const pluginName = this.constructor.name;
+
+    const processOptions = {
+      name: pluginName,
+      stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_SIZE,
+      additionalAssets: true,
+    };
+
+    compiler.hooks.compilation.tap(pluginName, (compilation) => {
+      compilation.hooks.processAssets.tapPromise(processOptions, (assets) => {
+        return this.optimize(compiler, compilation, assets);
+      });
+    });
   }
 }
 
-module.exports = CSSMQPackerPlugin;
+module.exports = CssMqpackerPlugin;

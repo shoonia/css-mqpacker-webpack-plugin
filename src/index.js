@@ -14,8 +14,11 @@ class CssMqpackerPlugin {
       test,
       include,
       exclude,
-      sort,
     };
+
+    this.mqp = postcss([
+      mqpacker({ sort }),
+    ]);
   }
 
   async optimize(compiler, compilation, assets) {
@@ -36,16 +39,10 @@ class CssMqpackerPlugin {
 
     const scheduledTasks = [];
 
-    const mqp = postcss([
-      mqpacker({
-        sort: this.options.sort,
-      }),
-    ]);
-
     for (const asset of assetsForMinify) {
       const task = async () => {
         const { name, inputSource } = asset;
-        const { css } = await mqp.process(inputSource.source());
+        const { css } = await this.mqp.process(inputSource.source());
 
         compilation.updateAsset(name, new RawSource(css));
       };

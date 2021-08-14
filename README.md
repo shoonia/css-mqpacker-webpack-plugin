@@ -36,7 +36,7 @@ module.exports = {
 
 ### `test`
 
-Type: `test` Default: `/\.css(\?.*)?$/i`
+Type: `RegExp` Default: `/\.css(\?.*)?$/i`
 
 A regular expression to match the asset name that the processor handles.
 

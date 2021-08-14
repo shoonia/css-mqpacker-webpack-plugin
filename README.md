@@ -34,9 +34,9 @@ module.exports = {
 
 ## Options
 
-### `regExp`
+### `test`
 
-Type: `RegExp` Default: `/\.css$/i`
+Type: `test` Default: `/\.css(\?.*)?$/i`
 
 A regular expression to match the asset name that the processor handles.
 
@@ -56,7 +56,7 @@ module.exports = {
     minimize: true,
     minimizer: [
       new CSSMQPackerPlugin({
-        regExp: /\.css$/i,
+        test: /\.css(\?.*)?$/i,
         sort: false,
       }),
     ],

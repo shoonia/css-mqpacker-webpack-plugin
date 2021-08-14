@@ -3,7 +3,7 @@
 [![npm version](https://img.shields.io/npm/v/css-mqpacker-webpack-plugin.svg)](https://www.npmjs.com/package/css-mqpacker-webpack-plugin)
 
 
-The Webpack plugin for pack same CSS media query rules into one using PostCSS.
+The Webpack plugin for pack same CSS media query rules into one using [PostCSS](https://github.com/postcss/postcss).
 
 > [node-css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
 
@@ -20,13 +20,13 @@ yarn add css-mqpacker-webpack-plugin -D
 **webpack.config.js**
 
 ```js
-const CSSMQPackerPlugin = require('css-mqpacker-webpack-plugin');
+const CssMqpackerPlugin = require('css-mqpacker-webpack-plugin');
 
 module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new CSSMQPackerPlugin(),
+      new CssMqpackerPlugin(),
     ],
   },
 };
@@ -36,9 +36,66 @@ module.exports = {
 
 ### `test`
 
-Type: `RegExp` Default: `/\.css(\?.*)?$/i`
+Type: `String|RegExp|Array<String|RegExp>` Default: `/\.css(\?.*)?$/i`
 
-A regular expression to match the asset name that the processor handles.
+Test to match files against.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMqpackerPlugin({
+        test: /\.foo\.css$/i,
+      }),
+    ],
+  },
+};
+```
+
+### `include`
+
+Type: `String|RegExp|Array<String|RegExp>` Default: `undefined`
+
+Files to include.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMqpackerPlugin({
+        include: /\/includes/,
+      }),
+    ],
+  },
+};
+```
+
+### `exclude`
+
+Type: `String|RegExp|Array<String|RegExp>` Default: `undefined`
+
+Files to exclude.
+
+**webpack.config.js**
+
+```js
+module.exports = {
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new CssMqpackerPlugin({
+        exclude: /\/excludes/,
+      }),
+    ],
+  },
+};
+```
 
 ### `sort`
 
@@ -49,15 +106,12 @@ By default, CSS MQPacker pack and order media queries as they are defined ([the 
 **webpack.config.js**
 
 ```js
-const CSSMQPackerPlugin = require('css-mqpacker-webpack-plugin');
-
 module.exports = {
   optimization: {
     minimize: true,
     minimizer: [
-      new CSSMQPackerPlugin({
-        test: /\.css(\?.*)?$/i,
-        sort: false,
+      new CssMqpackerPlugin({
+        sort: true,
       }),
     ],
   },

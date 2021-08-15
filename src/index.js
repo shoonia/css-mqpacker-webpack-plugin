@@ -1,5 +1,5 @@
 const postcss = require('postcss');
-const validate = require('schema-utils');
+const { validate } = require('schema-utils');
 const mqpacker = require('../css-mqpacker/index.js');
 const schema = require('./options.json');
 

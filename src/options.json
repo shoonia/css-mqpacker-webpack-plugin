@@ -1,0 +1,77 @@
+{
+  "definitions": {
+    "Rule": {
+      "description": "Filtering rule as regex or string.",
+      "anyOf": [
+        {
+          "instanceof": "RegExp",
+          "tsType": "RegExp"
+        },
+        {
+          "type": "string",
+          "minLength": 1
+        }
+      ]
+    },
+    "Rules": {
+      "description": "Filtering rules.",
+      "anyOf": [
+        {
+          "type": "array",
+          "items": {
+            "description": "A rule condition.",
+            "oneOf": [
+              {
+                "$ref": "#/definitions/Rule"
+              }
+            ]
+          }
+        },
+        {
+          "$ref": "#/definitions/Rule"
+        }
+      ]
+    },
+    "MinimizerOptions": {
+      "additionalProperties": true,
+      "type": "object"
+    }
+  },
+  "title": "CssMqpackerWebpackPluginOptions",
+  "type": "object",
+  "properties": {
+    "test": {
+      "description": "Include all modules that pass test assertion.",
+      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#test",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Rules"
+        }
+      ]
+    },
+    "include": {
+      "description": "Include all modules matching any of these conditions.",
+      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#include",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Rules"
+        }
+      ]
+    },
+    "exclude": {
+      "description": "Exclude all modules matching any of these conditions.",
+      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#exclude",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/Rules"
+        }
+      ]
+    },
+    "sort": {
+      "description": "Sort media queries.",
+      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#sort",
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

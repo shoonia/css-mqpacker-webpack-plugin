@@ -2,7 +2,6 @@
 
 [![npm version](https://img.shields.io/npm/v/css-mqpacker-webpack-plugin.svg)](https://www.npmjs.com/package/css-mqpacker-webpack-plugin)
 
-
 The Webpack plugin for pack same CSS media query rules into one using [PostCSS](https://github.com/postcss/postcss).
 
 > [node-css-mqpacker](https://github.com/hail2u/node-css-mqpacker)

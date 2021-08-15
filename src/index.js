@@ -1,12 +1,12 @@
 const postcss = require('postcss');
-const { validate } = require('schema-utils');
+const validate = require('schema-utils');
 const mqpacker = require('../css-mqpacker/index.js');
 const schema = require('./options.json');
 
 class CssMqpackerPlugin {
   constructor(options = {}) {
     validate(schema, options, {
-      name: "Css MQPacker Plugin",
+      name: "CssMqpackerPlugin",
       baseDataPath: "options",
     });
 

@@ -35,27 +35,22 @@ class CssMqpackerPlugin {
       this.options,
     );
 
-    const assetsForMinify = Object
+    const process = async (name) => {
+      const { source } = compilation.getAsset(name);
+      const { css } = await this.mqp.process(source.source());
+
+      compilation.updateAsset(name, new RawSource(css));
+    };
+
+    const scheduledTasks = Object
       .keys(typeof assets === 'undefined' ? compilation.assets : assets)
-      .filter((name) => matchObject(name))
-      .map((name) => {
-        const { source } = compilation.getAsset(name);
+      .reduce((tasks, name) => {
+        if (matchObject(name)) {
+          tasks.push(process(name));
+        }
 
-        return { name, inputSource: source };
-      });
-
-    const scheduledTasks = [];
-
-    for (const asset of assetsForMinify) {
-      const task = async () => {
-        const { name, inputSource } = asset;
-        const { css } = await this.mqp.process(inputSource.source());
-
-        compilation.updateAsset(name, new RawSource(css));
-      };
-
-      scheduledTasks.push(task());
-    }
+        return tasks;
+      }, []);
 
     Promise.all(scheduledTasks);
   }

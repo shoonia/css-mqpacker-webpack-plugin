@@ -4,16 +4,18 @@
   "description": "The Webpack plugin for pack same CSS media query rules into one using PostCSS",
   "main": "src/index.js",
   "scripts": {
-    "hoist": "node hoist.js"
+    "hoist": "node hoist.js",
+    "test": "uvu test"
   },
   "devDependencies": {
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#ee5119f",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "uvu": "^0.5.2"
   },
   "peerDependencies": {
     "postcss": "^8.0.0",
-    "webpack": "^4.0.0 || ^5.0.0",
-    "schema-utils": "^3.0.0"
+    "schema-utils": "^3.0.0",
+    "webpack": "^4.0.0 || ^5.0.0"
   },
   "keywords": [
     "webpack",

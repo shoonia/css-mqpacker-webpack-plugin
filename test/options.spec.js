@@ -18,6 +18,10 @@ test('valid `sort` option when it is a boolean', () => {
   is(check({ sort: false }), undefined);
 });
 
+test('valid `sort` option when it is function', () => {
+  is(check({ sort: x => x }), undefined);
+})
+
 test('invalid `sort` option', () => {
   throws(() => check({ sort: 1 }));
   throws(() => check({ sort: 0 }));

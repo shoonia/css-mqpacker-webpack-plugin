@@ -69,8 +69,7 @@
     },
     "sort": {
       "description": "Sort media queries.",
-      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#sort",
-      "type": "boolean"
+      "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#sort"
     }
   },
   "additionalProperties": false

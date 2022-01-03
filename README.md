@@ -98,7 +98,7 @@ module.exports = {
 
 ### `sort`
 
-Type: `Boolean` Default: `false`
+Type: `Boolean|Function` Default: `false`
 
 By default, CSS MQPacker pack and order media queries as they are defined ([the “first win” algorithm](https://github.com/hail2u/node-css-mqpacker#the-first-win-algorithm)). If you want to sort media queries automatically, pass `sort: true`.
 

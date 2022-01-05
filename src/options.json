@@ -31,10 +31,6 @@
           "$ref": "#/definitions/Rule"
         }
       ]
-    },
-    "MinimizerOptions": {
-      "additionalProperties": true,
-      "type": "object"
     }
   },
   "title": "CssMqpackerWebpackPluginOptions",

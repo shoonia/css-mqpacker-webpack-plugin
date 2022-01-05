@@ -10,7 +10,8 @@
   "devDependencies": {
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#ee5119f",
     "fs-extra": "^10.0.0",
-    "uvu": "^0.5.2"
+    "schema-utils": "^4.0.0",
+    "uvu": "^0.5.3"
   },
   "peerDependencies": {
     "postcss": "^8.0.0",

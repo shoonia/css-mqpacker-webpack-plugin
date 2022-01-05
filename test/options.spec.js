@@ -19,6 +19,10 @@ test('invalid options', () => {
   throws(() => check(x => x));
 });
 
+test('unknown option', () => {
+  throws(() => check({ some: 'hello' }));
+})
+
 // test:
 
 test('valid `test` option when it is a string', () => {

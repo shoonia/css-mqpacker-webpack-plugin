@@ -4,7 +4,7 @@
  * therefore, we commit the `css-mqpacker` package with this one.
  */
 
- const { resolve } = require('path');
+ const { resolve } = require('node:path');
  const { emptyDir, copy, outputJSON } = require('fs-extra');
  const pkg = require('@hail2u/css-mqpacker/package.json');
 

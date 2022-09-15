@@ -8,10 +8,10 @@
     "test": "uvu test"
   },
   "devDependencies": {
-    "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#ee5119f",
-    "fs-extra": "^10.0.0",
+    "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#2349fdd",
+    "fs-extra": "^10.1.0",
     "schema-utils": "^4.0.0",
-    "uvu": "^0.5.3"
+    "uvu": "^0.5.6"
   },
   "peerDependencies": {
     "postcss": "^8.0.0",

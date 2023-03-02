@@ -3,7 +3,7 @@
   "version": "0.12.5",
   "description": "The Webpack plugin for pack same CSS media query rules into one using PostCSS",
   "main": "src/index.js",
-  "types": "index.d.ts",
+  "types": "src/index.d.ts",
   "scripts": {
     "hoist": "node hoist.js",
     "test": "uvu test"
@@ -33,8 +33,7 @@
   ],
   "files": [
     "css-mqpacker",
-    "src",
-    "index.d.ts"
+    "src"
   ],
   "repository": {
     "type": "git",

@@ -9,4 +9,4 @@ declare class CssMqpackerPlugin {
   constructor(options?: Options)
 }
 
-export default CssMqpackerPlugin
+export = CssMqpackerPlugin

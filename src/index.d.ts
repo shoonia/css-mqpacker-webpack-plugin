@@ -7,7 +7,7 @@ interface Options {
 
 declare class CssMqpackerPlugin {
   constructor(options?: Options)
-  apply(compiler: import("webpack").Compiler): void;
+  apply(compiler: import("webpack").Compiler): void
 }
 
 export = CssMqpackerPlugin

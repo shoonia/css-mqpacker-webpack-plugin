@@ -10,7 +10,7 @@
   },
   "devDependencies": {
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#2349fdd",
-    "fs-extra": "^11.1.0",
+    "fs-extra": "^11.1.1",
     "schema-utils": "^4.0.0",
     "uvu": "^0.5.6"
   },

@@ -37,7 +37,10 @@ class CssMqpackerPlugin {
 
     const process = async (name) => {
       const { source } = compilation.getAsset(name);
-      const { css } = await this.mqp.process(source.source());
+
+      const { css } = await this.mqp.process(source.source(), {
+        from: name,
+      });
 
       compilation.updateAsset(name, new RawSource(css));
     };

@@ -1,7 +1,7 @@
-const postcss = require('postcss');
-const { validate } = require('schema-utils');
-const mqpacker = require('../css-mqpacker/index.js');
-const schema = require('./options.json');
+const postcss = require("postcss");
+const { validate } = require("schema-utils");
+const mqpacker = require("../css-mqpacker/index.js");
+const schema = require("./options.json");
 
 class CssMqpackerPlugin {
   constructor(options = {}) {
@@ -48,7 +48,7 @@ class CssMqpackerPlugin {
     };
 
     const scheduledTasks = Object
-      .keys(typeof assets === 'undefined' ? compilation.assets : assets)
+      .keys(typeof assets === "undefined" ? compilation.assets : assets)
       .reduce((tasks, name) => {
         if (matchObject(name)) {
           tasks.push(process(name));

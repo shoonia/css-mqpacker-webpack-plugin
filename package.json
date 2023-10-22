@@ -4,6 +4,14 @@
   "description": "The Webpack plugin for pack same CSS media query rules into one using PostCSS",
   "main": "src/index.js",
   "types": "src/index.d.ts",
+  "exports": {
+    ".": {
+      "default": "./src/index.js",
+      "types": "./src/index.d.ts"
+    },
+    "./css-mqpacker": "./css-mqpacker/index.js",
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "hoist": "node hoist.mjs",
     "test": "uvu test"

@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "scripts": {
-    "hoist": "node hoist.js",
+    "hoist": "node hoist.mjs",
     "test": "uvu test"
   },
   "devDependencies": {

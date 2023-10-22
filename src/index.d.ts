@@ -17,6 +17,9 @@ interface Options {
   sort?: boolean | ((a: string, b: string) => number)
 }
 
+/**
+ * The Webpack plugin for pack same CSS media query rules into one using PostCSS
+ */
 declare class CssMqpackerPlugin {
   constructor(options?: Options)
   /**

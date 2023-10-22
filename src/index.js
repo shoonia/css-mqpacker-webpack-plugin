@@ -36,13 +36,15 @@ class CssMqpackerPlugin {
     );
 
     const process = async (name) => {
-      const { source } = compilation.getAsset(name);
+      const data = compilation.getAsset(name).source.source();
 
-      const { css } = await this.mqp.process(source.source(), {
+      const { css } = await this.mqp.process(data, {
         from: name,
       });
 
-      compilation.updateAsset(name, new RawSource(css));
+      if (data !== css) {
+        compilation.updateAsset(name, new RawSource(css));
+      }
     };
 
     const scheduledTasks = Object

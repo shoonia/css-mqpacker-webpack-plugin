@@ -6,6 +6,52 @@ The Webpack plugin for pack same CSS media query rules into one using [PostCSS](
 
 > [node-css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
 
+**Before:**
+
+```css
+.foo {
+  width: 240px;
+}
+
+@media (max-width: 768px) {
+  .foo {
+    width: 576px;
+  }
+}
+
+.bar {
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .bar {
+    width: 384px;
+  }
+}
+```
+
+**After:**
+
+```css
+.foo {
+  width: 240px;
+}
+
+.bar {
+  width: 160px;
+}
+
+@media (max-width: 768px) {
+  .foo {
+    width: 576px;
+  }
+
+  .bar {
+    width: 384px;
+  }
+}
+```
+
 ## Install
 
 ```bash

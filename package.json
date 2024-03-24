@@ -14,12 +14,11 @@
   },
   "scripts": {
     "hoist": "node hoist.mjs",
-    "test": "uvu test"
+    "test": "node test/options.spec.js"
   },
   "devDependencies": {
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#2349fdd",
-    "schema-utils": "^4.2.0",
-    "uvu": "^0.5.6"
+    "schema-utils": "^4.2.0"
   },
   "peerDependencies": {
     "postcss": "^8.0.0",

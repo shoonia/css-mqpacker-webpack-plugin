@@ -1,5 +1,5 @@
-const { test } = require('uvu');
-const { is, throws } = require('uvu/assert');
+const test = require('node:test');
+const { strictEqual: is, throws } = require('node:assert');
 const { validate } = require('schema-utils');
 
 const schema = require('../src/options.json');
@@ -93,5 +93,3 @@ test('invalid `sort` option', () => {
     throws(() => check({ sort }));
   });
 });
-
-test.run();

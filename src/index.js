@@ -6,7 +6,7 @@ const schema = require("./options.json");
 class CssMqpackerPlugin {
   static name = "CssMqpackerPlugin";
 
-  #options;
+  #match;
   #mqpacker;
 
   constructor(options = {}) {
@@ -22,7 +22,7 @@ class CssMqpackerPlugin {
       sort = false,
     } = options;
 
-    this.#options = {
+    this.#match = {
       test,
       include,
       exclude,
@@ -37,7 +37,7 @@ class CssMqpackerPlugin {
     const { RawSource } = compiler.webpack.sources;
     const matchObject = compiler.webpack.ModuleFilenameHelpers.matchObject.bind(
       undefined,
-      this.#options,
+      this.#match,
     );
 
     const process = async (name) => {

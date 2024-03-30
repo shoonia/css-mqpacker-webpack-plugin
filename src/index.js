@@ -4,11 +4,14 @@ const mqpacker = require("../css-mqpacker/index.js");
 const schema = require("./options.json");
 
 class CssMqpackerPlugin {
-  static pluginName = "CssMqpackerPlugin";
+  static name = "CssMqpackerPlugin";
+
+  #options;
+  #mqpacker;
 
   constructor(options = {}) {
     validate(schema, options, {
-      name: CssMqpackerPlugin.pluginName,
+      name: CssMqpackerPlugin.name,
       baseDataPath: "options",
     });
 
@@ -19,13 +22,13 @@ class CssMqpackerPlugin {
       sort = false,
     } = options;
 
-    this.options = {
+    this.#options = {
       test,
       include,
       exclude,
     };
 
-    this.mqp = postcss([
+    this.#mqpacker = postcss([
       mqpacker({ sort }),
     ]);
   }
@@ -34,13 +37,13 @@ class CssMqpackerPlugin {
     const { RawSource } = compiler.webpack.sources;
     const matchObject = compiler.webpack.ModuleFilenameHelpers.matchObject.bind(
       undefined,
-      this.options,
+      this.#options,
     );
 
     const process = async (name) => {
       const data = compilation.getAsset(name).source.source();
 
-      const { css } = await this.mqp.process(data, {
+      const { css } = await this.#mqpacker.process(data, {
         from: name,
       });
 
@@ -64,12 +67,12 @@ class CssMqpackerPlugin {
 
   apply(compiler) {
     const processOptions = {
-      name: CssMqpackerPlugin.pluginName,
+      name: CssMqpackerPlugin.name,
       stage: compiler.webpack.Compilation.PROCESS_ASSETS_STAGE_OPTIMIZE_SIZE,
       additionalAssets: true,
     };
 
-    compiler.hooks.compilation.tap(CssMqpackerPlugin.pluginName, (compilation) => {
+    compiler.hooks.compilation.tap(CssMqpackerPlugin.name, (compilation) => {
       compilation.hooks.processAssets.tapPromise(processOptions, (assets) => {
         return this.#optimize(compiler, compilation, assets);
       });

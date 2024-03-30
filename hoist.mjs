@@ -14,6 +14,7 @@ const toDir = './css-mqpacker';
 
 const packageJson = JSON.stringify({
   name: pkg.name,
+  main: pkg.main,
   version: pkg.version,
   author: pkg.author,
   homepage: pkg.homepage,

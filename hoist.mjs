@@ -7,7 +7,7 @@
 import { resolve } from 'node:path';
 import { existsSync } from 'node:fs';
 import { rm, mkdir, copyFile, writeFile } from 'node:fs/promises';
-import pkg from '@hail2u/css-mqpacker/package.json' assert { type: 'json' };
+import pkg from '@hail2u/css-mqpacker/package.json' with { type: 'json' };
 
 const fromDir = './node_modules/@hail2u/css-mqpacker';
 const toDir = './css-mqpacker';

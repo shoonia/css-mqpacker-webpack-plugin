@@ -20,11 +20,7 @@
           "type": "array",
           "items": {
             "description": "A rule condition.",
-            "oneOf": [
-              {
-                "$ref": "#/definitions/Rule"
-              }
-            ]
+            "$ref": "#/definitions/Rule"
           }
         },
         {
@@ -39,29 +35,17 @@
     "test": {
       "description": "Include all modules that pass test assertion.",
       "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#test",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/Rules"
-        }
-      ]
+      "$ref": "#/definitions/Rules"
     },
     "include": {
       "description": "Include all modules matching any of these conditions.",
       "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#include",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/Rules"
-        }
-      ]
+      "$ref": "#/definitions/Rules"
     },
     "exclude": {
       "description": "Exclude all modules matching any of these conditions.",
       "link": "https://github.com/shoonia/css-mqpacker-webpack-plugin#exclude",
-      "oneOf": [
-        {
-          "$ref": "#/definitions/Rules"
-        }
-      ]
+      "$ref": "#/definitions/Rules"
     },
     "sort": {
       "description": "Sort media queries.",
@@ -71,7 +55,8 @@
           "type": "boolean"
         },
         {
-          "instanceof": "Function"
+          "instanceof": "Function",
+          "tsType": "((a: string, b: string) => number)"
         }
       ]
     }

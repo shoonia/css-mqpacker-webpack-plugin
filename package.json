@@ -14,7 +14,7 @@
   },
   "scripts": {
     "hoist": "node hoist.mjs",
-    "test": "node test/options.spec.js"
+    "test": "node --test test/*.spec.js"
   },
   "devDependencies": {
     "@hail2u/css-mqpacker": "github:hail2u/node-css-mqpacker#1f9a1cf",
